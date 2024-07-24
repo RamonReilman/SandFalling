@@ -40,12 +40,11 @@ int Grid::GetValue(int row, int column)
     return 0;
 }
 
-void Grid::ToggleCell(int row, int column, float hue, int size)
+void Grid::ToggleCell(int row, int column, float hue, int Size)
 {
     if (isInBounds(row, column))
     {
-        int Size = 5;
-        int extent = std::floor(Size);
+        int extent = std::ceil(Size/2);
         for (int rowDelta = -extent; rowDelta < extent; rowDelta++)
         {
             for (int columnDelta = -extent; columnDelta < extent; columnDelta++)

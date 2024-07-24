@@ -43,15 +43,15 @@ void Simulation::Update()
                     if (grid.GetValue(row+1, column) == 0)
                     {
                         tempGrid.SetValue(row,column,0);
-                        tempGrid.SetValue(row+1, column, Hue);
+                        tempGrid.SetValue(row+1, column, cellValue);
                     }
                     else if (grid.GetValue(row+1, column) > 0)
                     {
                         if (getBottoms(row, column) == 0)
                         {
                             int randN = GetRandomValue(0,1);
-                            if (randN == 0) {tempGrid.SetValue(row+1,column+1,Hue);}
-                            else if (randN == 1) {tempGrid.SetValue(row+1, column-1,Hue);}
+                            if (randN == 0) {tempGrid.SetValue(row+1,column+1,cellValue);}
+                            else if (randN == 1) {tempGrid.SetValue(row+1, column-1,cellValue);}
                             tempGrid.SetValue(row,column,0);
                         }
                         else if (getBottoms(row,column) == 1) {tempGrid.SetValue(row+1, NewCol2,cellValue); tempGrid.SetValue(row, column,0);}
