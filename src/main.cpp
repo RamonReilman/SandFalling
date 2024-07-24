@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-    int CELLSIZE;
+    int CELLSIZE = 25;
     if (argc == 2)
     {
         try {
@@ -23,7 +23,6 @@ int main(int argc, char* argv[])
         } catch (char* arg) {
             std::cout << "Cannot set CELLSIZE to given value, setting it to 25\n";
             std::cout << "Given value: " << arg << ", is not an integer.\n";
-            CELLSIZE = 25;
         }
     }
 
