@@ -1,5 +1,4 @@
 #include "simulation.hpp"
-#include <iostream>
 #include <raylib.h>
 
 void Simulation::Draw()
