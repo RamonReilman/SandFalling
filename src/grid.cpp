@@ -1,4 +1,5 @@
 #include "grid.hpp"
+#include <cmath>
 #include <codecvt>
 #include <iostream>
 #include <raylib.h>
@@ -45,15 +46,27 @@ void Grid::ToggleCell(int row, int column, float hue)
 {
     if (isInBounds(row, column))
     {
-        if (cells[row][column] == 0)
+        int Size = 5;
+        int extent = std::floor(Size);
+        for (int rowDelta = -extent; rowDelta < extent; rowDelta++)
         {
-            cells[row][column] = hue;
-        }
-        else {
-            cells[row][column] = 0;
-        }
+            for (int columnDelta = -extent; columnDelta < extent; columnDelta++)
+            {
+                int rowNew =row + rowDelta;
+                int columnNew = column + columnDelta;
 
-
+                if (isInBounds(rowNew, columnNew))
+                {
+                    if (cells[rowNew][columnNew] == 0)
+                    {
+                        cells[rowNew][columnNew] = hue;
+                    }
+                    else {
+                        cells[rowNew][columnNew] = 0;
+                    }
+                }
+            }
+        }
     }
 }
 
