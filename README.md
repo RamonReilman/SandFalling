@@ -1,6 +1,6 @@
 # Faling Sand cellular automata
 ## Author
-- Ramon Reilman
+- Ramon Reilman, github:https://github.com/RamonReilman
 
 ## Deps
 - Raylib, version 5.0
@@ -24,3 +24,4 @@ make
 - S, slowdown
 - Space, start/stop
 - Leftmousebtn, toggle cell state
+- C, clear screen, when paused.
