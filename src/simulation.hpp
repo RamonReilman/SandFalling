@@ -16,7 +16,7 @@ class Simulation
         void Start(){run = true;}
         void Stop(){run = false;}
 
-        void ToggleCell(int row, int column);
+        void ToggleCell(int row, int column, int size);
 
         void Clear();
 

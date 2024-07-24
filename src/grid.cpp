@@ -40,7 +40,7 @@ int Grid::GetValue(int row, int column)
     return 0;
 }
 
-void Grid::ToggleCell(int row, int column, float hue)
+void Grid::ToggleCell(int row, int column, float hue, int size)
 {
     if (isInBounds(row, column))
     {

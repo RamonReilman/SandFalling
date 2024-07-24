@@ -66,14 +66,14 @@ void Simulation::Update()
     }
 }
 
-void Simulation::ToggleCell(int row, int column)
+void Simulation::ToggleCell(int row, int column, int size)
 {
     Hue += 1;
     if (Hue > 360)
     {
         Hue = 1;
     }
-    grid.ToggleCell(row, column, Hue);
+    grid.ToggleCell(row, column, Hue, size);
 
 }
 

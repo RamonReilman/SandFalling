@@ -15,7 +15,7 @@ class Grid
         int getRows(){return rows;}
         int getColumns(){return columns;}
 
-        void ToggleCell(int row, int column, float hue);
+        void ToggleCell(int row, int column, float hue, int size);
         bool isInBounds(int row, int column);
 
         void Clear();

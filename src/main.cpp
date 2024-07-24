@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
             Vector2 mousePos = GetMousePosition();
             int row = mousePos.y / CELLSIZE;
             int column = mousePos.x / CELLSIZE;
-            simulation.ToggleCell(row, column);
+            simulation.ToggleCell(row, column, 5);
         }
         if (IsKeyPressed(KEY_SPACE))
         {
