@@ -20,15 +20,13 @@ void Grid::Draw()
 
 bool Grid::isInBounds(int row, int column)
 {
-    return (row >= 0 && row <= rows && column >= 0 && column <= columns);
+    return (row >= 0 && row <= rows-1 && column >= 0 && column <= columns-1);
 }
 
 void Grid::SetValue(int row, int column, int value)
 {
     if (isInBounds(row, column))
     {
-
-
         cells[row][column] = value;
     }
 }
@@ -62,6 +60,7 @@ void Grid::ToggleCell(int row, int column, float hue)
                         cells[rowNew][columnNew] = hue;
                     }
                     else {
+
                         cells[rowNew][columnNew] = 0;
                     }
                 }
