@@ -23,7 +23,7 @@ class Grid
         int rows;
         int columns;
         int cellSize;
-        float H = 200;
+        float H = 1;
         float S = 1;
         float V = 1;
         std::vector<std::vector<float>> cells;

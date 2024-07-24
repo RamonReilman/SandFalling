@@ -27,8 +27,10 @@ int Simulation::getBottoms(int row, int column)
 }
 
 void Simulation::Update()
-{   if (isRunning())
+{
+    if (isRunning())
     {
+
         for (int row = 0; row < grid.getRows()-1; row++)
         {
             for (int column = 0; column < grid.getColumns(); column++)
@@ -59,27 +61,27 @@ void Simulation::Update()
                     }
                 }
             }
-
         }
-
         grid = tempGrid;
     }
 }
 
 void Simulation::ToggleCell(int row, int column)
 {
-    grid.ToggleCell(row, column, Hue);
     Hue += 1;
     if (Hue > 360)
     {
         Hue = 1;
     }
+    grid.ToggleCell(row, column, Hue);
+
 }
 
 void Simulation::Clear()
 {
     if (!isRunning())
     {
+        tempGrid.Clear();
         grid.Clear();
     }
 }

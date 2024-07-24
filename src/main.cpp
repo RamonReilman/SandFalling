@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 1200;
 
-    int FPS = 29;
+    int FPS = 100;
     Simulation simulation{WINDOW_WIDTH, WINDOW_HEIGHT, CELLSIZE};
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sand Falling");
@@ -50,7 +50,8 @@ int main(int argc, char* argv[])
             if (simulation.isRunning())
             {
                 simulation.Stop();
-            } else {simulation.Start();}
+                SetWindowTitle("Sand is Not Falling");
+            } else {simulation.Start(); SetWindowTitle("Sand is Falling");}
         }
         else if (IsKeyPressed(KEY_C))
         {
@@ -72,14 +73,14 @@ int main(int argc, char* argv[])
             }
 
         }
+
         simulation.Update();
         BeginDrawing();
-
-
         ClearBackground(GREY);
         simulation.Draw();
         EndDrawing();
     }
+
     CloseWindow();
     return 0;
 }
