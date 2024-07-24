@@ -1,4 +1,5 @@
 #include "simulation.hpp"
+#include <iostream>
 #include <raylib.h>
 
 void Simulation::Draw()
@@ -34,38 +35,45 @@ void Simulation::Update()
             {
                 int NewCol = (column-1+grid.getColumns()) % grid.getColumns();
                 int NewCol2 = (column+1+grid.getColumns()) % grid.getColumns();
-                int cellValue = grid.GetValue(row,column);
-                if (cellValue == 1)
+                float cellValue = grid.GetValue(row,column);
+                if (cellValue > 0)
                 {
                     if (grid.GetValue(row+1, column) == 0)
                     {
                         tempGrid.SetValue(row,column,0);
-                        tempGrid.SetValue(row+1, column, 1);
+                        tempGrid.SetValue(row+1, column, Hue);
                     }
-                    else if (grid.GetValue(row+1, column) == 1)
+                    else if (grid.GetValue(row+1, column) > 0)
                     {
                         if (getBottoms(row, column) == 0)
                         {
                             int randN = GetRandomValue(0,1);
-                            if (randN == 0) {tempGrid.SetValue(row+1,column+1,1);}
-                            else if (randN == 1) {tempGrid.SetValue(row+1, column-1,1);}
+                            if (randN == 0) {tempGrid.SetValue(row+1,column+1,Hue);}
+                            else if (randN == 1) {tempGrid.SetValue(row+1, column-1,Hue);}
                             tempGrid.SetValue(row,column,0);
                         }
-                        else if (getBottoms(row,column) == 1) {tempGrid.SetValue(row+1, NewCol2,1); tempGrid.SetValue(row, column,0);}
-                        else if (getBottoms(row,column) == -1) {tempGrid.SetValue(row+1, NewCol,1); tempGrid.SetValue(row, column,0);}
-                        else if (getBottoms(row,column) == 2) {tempGrid.SetValue(row, column,1);}
+                        else if (getBottoms(row,column) == 1) {tempGrid.SetValue(row+1, NewCol2,cellValue); tempGrid.SetValue(row, column,0);}
+                        else if (getBottoms(row,column) == -1) {tempGrid.SetValue(row+1, NewCol,cellValue); tempGrid.SetValue(row, column,0);}
+                        else if (getBottoms(row,column) == 2) {tempGrid.SetValue(row, column,cellValue);}
 
                     }
                 }
             }
+
         }
+
         grid = tempGrid;
     }
 }
 
 void Simulation::ToggleCell(int row, int column)
 {
-    grid.ToggleCell(row, column);
+    grid.ToggleCell(row, column, Hue);
+    Hue += 1;
+    if (Hue > 360)
+    {
+        Hue = 1;
+    }
 }
 
 void Simulation::Clear()

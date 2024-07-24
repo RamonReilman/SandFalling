@@ -23,5 +23,6 @@ class Simulation
     private:
         Grid grid;
         Grid tempGrid;
+        float Hue = 1;
         bool run;
 };

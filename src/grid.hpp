@@ -6,7 +6,7 @@ class Grid
 {
     public:
         Grid(int width, int height, int cellSize)
-        : rows(height/cellSize), columns(width/cellSize), cellSize(cellSize), cells(rows, std::vector<int>(columns, 0)){};
+        : rows(height/cellSize), columns(width/cellSize), cellSize(cellSize), cells(rows, std::vector<float>(columns, 0)){};
         void Draw();
         void SetValue(int row, int column, int value);
 
@@ -15,7 +15,7 @@ class Grid
         int getRows(){return rows;}
         int getColumns(){return columns;}
 
-        void ToggleCell(int row, int column);
+        void ToggleCell(int row, int column, float hue);
         bool isInBounds(int row, int column);
 
         void Clear();
@@ -23,6 +23,8 @@ class Grid
         int rows;
         int columns;
         int cellSize;
-        Color sand = {194, 178, 128, 255};
-        std::vector<std::vector<int>> cells;
+        float H = 200;
+        float S = 1;
+        float V = 1;
+        std::vector<std::vector<float>> cells;
 };

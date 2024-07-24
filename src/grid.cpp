@@ -1,4 +1,6 @@
 #include "grid.hpp"
+#include <codecvt>
+#include <iostream>
 #include <raylib.h>
 
 void Grid::Draw()
@@ -7,9 +9,10 @@ void Grid::Draw()
     {
         for (int column = 0; column < columns; column++)
         {
-            Color color = cells[row][column] ? Color{sand} : Color{55, 55, 55, 255};
-            DrawRectangle(column*cellSize, row*cellSize, cellSize, cellSize, color);
+            Color sand = ColorFromHSV(Grid::GetValue(row,column),S,V);
 
+            Color color = cells[row][column] ? sand : Color{55, 55, 55, 255};
+            DrawRectangle(column*cellSize, row*cellSize, cellSize, cellSize, color);
         }
     }
 }
@@ -23,6 +26,8 @@ void Grid::SetValue(int row, int column, int value)
 {
     if (isInBounds(row, column))
     {
+
+
         cells[row][column] = value;
     }
 }
@@ -36,13 +41,18 @@ int Grid::GetValue(int row, int column)
     return 0;
 }
 
-void Grid::ToggleCell(int row, int column)
+void Grid::ToggleCell(int row, int column, float hue)
 {
     if (isInBounds(row, column))
     {
+        if (cells[row][column] == 0)
+        {
+            cells[row][column] = hue;
+        }
+        else {
+            cells[row][column] = 0;
+        }
 
-
-        cells[row][column] = !cells[row][column];
 
     }
 }

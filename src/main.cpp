@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 1200;
 
-    int FPS = 100;
+    int FPS = 29;
     Simulation simulation{WINDOW_WIDTH, WINDOW_HEIGHT, CELLSIZE};
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sand Falling");
@@ -72,8 +72,6 @@ int main(int argc, char* argv[])
             }
 
         }
-
-
         simulation.Update();
         BeginDrawing();
 
