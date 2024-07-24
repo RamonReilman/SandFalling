@@ -7,8 +7,8 @@
 
 ## Installation
 ```
-git clone x
-cd x
+git clone git@github.com:RamonReilman/SandFalling.git
+cd SandFalling
 mkdir build
 cmake ..
 make
