@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
         }
     }
 
-    Color GREY = {29, 29, 29, 255};
+    Color GREY = {55, 55, 55, 255};
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 1200;
 
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
             Vector2 mousePos = GetMousePosition();
             int row = mousePos.y / CELLSIZE;
             int column = mousePos.x / CELLSIZE;
-            simulation.ToggleCell(row, column, 3);
+            simulation.ToggleCell(row, column, 50/CELLSIZE);
         }
         if (IsKeyPressed(KEY_SPACE))
         {

@@ -10,10 +10,13 @@ void Grid::Draw()
     {
         for (int column = 0; column < columns; column++)
         {
-            Color sand = ColorFromHSV(Grid::GetValue(row,column),S,V);
+            if (cells[row][column] > 0)
+            {
+                Color sand = ColorFromHSV(Grid::GetValue(row,column),S,V);
 
-            Color color = cells[row][column] ? sand : Color{55, 55, 55, 255};
-            DrawRectangle(column*cellSize, row*cellSize, cellSize, cellSize, color);
+                DrawRectangle(column*cellSize, row*cellSize, cellSize, cellSize, sand);
+            }
+
         }
     }
 }

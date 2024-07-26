@@ -79,9 +79,7 @@ void Simulation::ToggleCell(int row, int column, int size)
 
 void Simulation::Clear()
 {
-    if (!isRunning())
-    {
-        tempGrid.Clear();
-        grid.Clear();
-    }
+    tempGrid.Clear();
+    grid.Clear();
+
 }
