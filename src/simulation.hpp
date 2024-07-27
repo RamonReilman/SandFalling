@@ -15,7 +15,7 @@ class Simulation
 
         void Start(){run = true;}
         void Stop(){run = false;}
-
+        void NewGrid(int width, int height, int cellSize) {grid = Grid(width, height, cellSize); tempGrid = Grid(width, height, cellSize);}
         void ToggleCell(int row, int column, int size);
 
         void Clear();

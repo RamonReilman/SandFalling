@@ -25,17 +25,26 @@ int main(int argc, char* argv[])
             std::cout << "Given value: " << arg << ", is not an integer.\n";
         }
     }
+    if (CELLSIZE > 25)
+    {
+        CELLSIZE = 25;
+    }
 
     Color GREY = {55, 55, 55, 255};
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 1200;
 
     int FPS = 100;
-    Simulation simulation{WINDOW_WIDTH, WINDOW_HEIGHT, CELLSIZE};
+    int monitor = GetCurrentMonitor();
 
-    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Sand Falling");
+
+
+    InitWindow(GetMonitorWidth(monitor), GetMonitorHeight(monitor) , "Sand Falling");
+    SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
     SetTargetFPS(FPS);
 
+    ToggleFullscreen();
+    Simulation simulation{GetMonitorWidth(monitor),  GetMonitorHeight(monitor), CELLSIZE};
     while (!WindowShouldClose())
     {
         if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
@@ -71,7 +80,21 @@ int main(int argc, char* argv[])
                 FPS -=2;
                 SetTargetFPS(FPS);
             }
-
+        }
+        if (IsKeyPressed(KEY_F))
+        {
+            if (!IsWindowFullscreen())
+            {
+                int monitor = GetCurrentMonitor();
+                SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
+                ToggleFullscreen();
+                simulation.NewGrid(GetMonitorWidth(monitor), GetMonitorHeight(monitor), CELLSIZE);
+            }
+            else {
+                ToggleFullscreen();
+                SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+                simulation.NewGrid(WINDOW_WIDTH, WINDOW_HEIGHT, CELLSIZE);
+            }
         }
 
         simulation.Update();
